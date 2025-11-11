@@ -2,7 +2,7 @@ pipeline {
 agent any
 options { timestamps() }
 environment {
-IMAGE = 'yasminehedhili/monapp'
+IMAGE = 'yasminehedhili/yasminehedhili'
 TAG = "build-${env.BUILD_NUMBER}"
 }
 stages {
@@ -18,11 +18,11 @@ bat "docker build -t %IMAGE%:%TAG% ."
 stage('Smoke Test') {
 steps {
 bat """
-docker rm -f monapp_test 2>nul || ver > nul
-docker run -d --name monapp_test -p 8081:80 %IMAGE%:%TAG%
+docker rm -f yasminehedhili_test 2>nul || ver > nul
+docker run -d --name yasminehedhili_test -p 8081:80 %IMAGE%:%TAG%
 ping -n 3 127.0.0.1 > nul
 curl -I http://localhost:8081 | find "200 OK"
-docker rm -f monapp_test
+docker rm -f yasminehedhili_test
 """
 }
 }
