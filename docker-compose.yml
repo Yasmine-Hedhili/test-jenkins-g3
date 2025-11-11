@@ -1,6 +1,6 @@
 services:
 web:
-image: YasmineHedhili/monapp:latest
+image: yasminehedhili/yasminehedhili:latest
 ports:
-- "8080:80"
+- "8082:80"
 restart: unless-stopped
